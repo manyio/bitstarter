@@ -1,10 +1,11 @@
-var express = require('express');
-
-var app = express.createServer(express.logger());
-
+#!/usr/bin/env node
+var express = require('express'),
+os = require('os'),
+fs = require('fs'),
+app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send('Hello World ManyIO2!');
+    response.send(new Buffer(fs.readFileSync('index2.html', 'utf-8')).toString('utf-8'));
 });
 
 var port = process.env.PORT || 5000;
